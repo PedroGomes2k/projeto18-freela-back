@@ -1,5 +1,5 @@
-export default function validateSchemas(schema){
-    
+export default function validateSchemas(schema) {
+
     return (res, req, next) => {
         const validation = schema.validate(req.body, { abortEarly: false })
 
