@@ -7,9 +7,10 @@ import { validateAuth } from "../middlewares/validateAuth.middlewares.js";
 
 const routerUser = Router()
 
-routerUser.get("/home", getServices)
+routerUser.get("/home", validateAuth, getServices)
 routerUser.get("/services", validateAuth, getMyServices)
 routerUser.post("/services/new-service", validateSchemas(serviceSchema), validateAuth, postService)
 routerUser.put("/services/update-service", validateSchemas(serviceSchema), validateAuth, updateService)
+
 
 export default routerUser

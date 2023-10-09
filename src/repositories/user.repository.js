@@ -29,7 +29,7 @@ export function findUser(userId) {
 
 export function updateCard(nameService, photo, description, price, id) {
     return (
-        db.query(`UPDATE services SET  "nameService" = $1, photo = $2, description = $3, price = $4 WHERE id = $5;`, [nameService, photo, description, price, id])
+        db.query(`UPDATE services SET "nameService" = $1, photo = $2, description = $3, price = $4 WHERE id = $5;`, [nameService, photo, description, price, id])
     )
 }
 

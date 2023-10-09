@@ -3,9 +3,12 @@ import { createService, findUser, findUserId, updateCard } from "../repositories
 
 export async function getServices(req, res) {
 
+    const { userId } = res.locals
+
     try {
         const services = await db.query("SELECT * FROM services")
-        res.status(201).send(services.rows)
+        
+        res.status(201).send(services)
 
     } catch (err) {
         return res.status(500).send(err.message)
@@ -34,10 +37,8 @@ export async function getMyServices(req, res) {
 
     try {
         const services = await findUserId(userId)
-        const cardService = await findUser(userId)
-        const newCard = services.rows.concat(cardService.rows)
-
-        res.status(201).send(newCard)
+        
+        res.status(201).send(services)
 
     } catch (err) {
         return res.status(500).send(err.message)
@@ -52,9 +53,9 @@ export async function updateService(req, res) {
 
     try {
 
-       await updateCard(nameService, photo, description, price, id)
+        await updateCard(nameService, photo, description, price, id)
 
-            res.sendStatus(201)
+        res.sendStatus(201)
 
     } catch (err) {
         return res.status(500).send(err.message)
