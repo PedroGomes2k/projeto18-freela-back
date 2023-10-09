@@ -10,5 +10,4 @@ routerAuth.post("/cadastro", validateSchemas(signUpShecma), createUsers)
 routerAuth.post("/", validateSchemas(loginShecma), loginUser)
 
 
-
 export default routerAuth

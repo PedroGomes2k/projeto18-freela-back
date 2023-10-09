@@ -20,3 +20,7 @@ export function createSessionDB(userId, token) {
         [userId, token]
     )
 }
+
+export function findSessionDB(token) {
+    return db.query(`SELECT "userId" FROM sessions WHERE token=$1;`, [token])
+}
