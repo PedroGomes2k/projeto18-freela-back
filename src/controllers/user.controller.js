@@ -8,7 +8,7 @@ export async function getServices(req, res) {
     try {
         const services = await db.query("SELECT * FROM services")
         
-        res.status(201).send(services)
+        res.status(201).send(services.rows)
 
     } catch (err) {
         return res.status(500).send(err.message)
@@ -38,7 +38,7 @@ export async function getMyServices(req, res) {
     try {
         const services = await findUserId(userId)
         
-        res.status(201).send(services)
+        res.status(201).send(services.rows)
 
     } catch (err) {
         return res.status(500).send(err.message)
